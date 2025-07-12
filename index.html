@@ -8,9 +8,6 @@
 </head>
 <body>
 
-  <header>
-    <h1>Girlmath</h1>
-    <p>Calculadora de Porcentajes y Conversor de Moneda</p>
   </header>
   <div class="container">
     <table>
@@ -52,10 +49,10 @@
     <h2>Calculadora de Porcentaje</h2>
 
     <label for="cantidad">Cantidad (RD$):</label>
-    <input type="number" id="cantidad" placeholder="Ej: RD$37,000">
+    <input type="number" id="cantidad" placeholder="Ej: 37000">
 
     <label for="porcentaje">Porcentaje (%):</label>
-    <input type="number" id="porcentaje" placeholder="Ej: 15%">
+    <input type="number" id="porcentaje" placeholder="Ej: 15">
 
     <button onclick="calcularPorcentaje()">Calcular</button>
 
@@ -63,16 +60,26 @@
   </div>
 
   <!-- Conversor de DOP a USD -->
-  <div class="section">
-    <h2>Convertir de DOP a USD</h2>
+<div class="section">
+  <h2>Convertir de DOP a USD</h2>
 
-    <label for="dop">Cantidad en RD$:</label>
-    <input type="number" id="dop" placeholder="Ej: RD$5,000">
+  <label for="dop">Cantidad en RD$:</label>
+  <input type="number" id="dop" placeholder="Ej: 5000" step="0.01">
 
-    <button onclick="convertirDOPaUSD()">Convertir</button>
+ <label for="banco">Selecciona un banco:</label>
+<select id="banco">
+  <option value="">-- Selecciona un banco --</option>
+  <option value="57.50">Banco Popular</option>
+  <option value="57.45">Banreservas</option>
+  <option value="57.60">BHD León</option>
+  <option value="57.55">Scotiabank</option>
+</select>
 
-    <p id="resultado-conversion"></p>
-  </div>
- <script src="scrip.js"></script>
+  <button onclick="convertirDOPaUSD()">Convertir</button>
+
+  <p id="resultado-conversion"></p>
+</div>
+
+ <script src="script.js"></script>
 </body>
 </html>
