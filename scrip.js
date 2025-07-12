@@ -13,8 +13,17 @@
   }
 
   const resultado = (cantidad * porcentaje) / 100;
-  resultadoTexto.innerText = `El ${porcentaje}% de RD$ ${cantidad} es RD$ ${resultado.toFixed(2)}.`;
+
+  // Formatear a moneda (pesos dominicanos)
+  const formatoMoneda = new Intl.NumberFormat('es-DO', {
+    style: 'currency',
+    currency: 'DOP',
+    minimumFractionDigits: 2
+  });
+
+  resultadoTexto.innerText = `El ${porcentaje}% de ${formatoMoneda.format(cantidad)} es ${formatoMoneda.format(resultado)}.`;
 }
+
 
     // CONVERSIÓN DOP a USD
     function convertirDOPaUSD() {
