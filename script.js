@@ -5,7 +5,7 @@ function calcularPorcentaje() {
   const resultadoTexto = document.getElementById('resultado');
 
   if (isNaN(cantidad) || isNaN(porcentaje)) {
-  let resultadoTexto.innerText = 'Por favor, ingresa valores válidos.';
+ resultadoTexto.innerText = 'Por favor, ingresa valores válidos.';
     return;
   }
 
@@ -23,7 +23,7 @@ function calcularPorcentaje() {
 
 
   const resultado = (cantidad * porcentaje) / 100;
- let resultadoTexto.innerText = `El ${porcentaje}% de RD$ ${cantidad} es RD$ ${resultado.toFixed(2)}.`;
+  resultadoTexto.innerText = `El ${porcentaje}% de RD$ ${cantidad} es RD$ ${resultado.toFixed(2)}.`;
 
 
     // CONVERSIÓN DOP a USD
