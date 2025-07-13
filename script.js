@@ -5,7 +5,7 @@ function calcularPorcentaje() {
   const resultadoTexto = document.getElementById('resultado');
 
   if (isNaN(cantidad) || isNaN(porcentaje)) {
-    resultadoTexto.innerText = 'Por favor, ingresa valores válidos.';
+  let resultadoTexto.innerText = 'Por favor, ingresa valores válidos.';
     return;
   }
 
