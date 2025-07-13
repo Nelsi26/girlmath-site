@@ -23,7 +23,7 @@ function calcularPorcentaje() {
 
 
   const resultado = (cantidad * porcentaje) / 100;
-  resultadoTexto.innerText = `El ${porcentaje}% de RD$ ${cantidad} es RD$ ${resultado.toFixed(2)}.`;
+ let resultadoTexto.innerText = `El ${porcentaje}% de RD$ ${cantidad} es RD$ ${resultado.toFixed(2)}.`;
 
 
     // CONVERSIÓN DOP a USD
