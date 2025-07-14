@@ -64,13 +64,13 @@ document.addEventListener("DOMContentLoaded", function () {
       labels: ["Banco Popular", "Banreservas", "BHD León", "Scotiabank"],
       datasets: [
         {
-          label: "Venta USD",
-          backgroundColor: "#4CAF50",
+         label: "Venta USD",
+          backgroundColor: "#f26abcff",
           data: [60.75, 60.70, 60.75, 60.85]
         },
         {
           label: "Venta EUR",
-          backgroundColor: "#2196F3",
+          backgroundColor: "#fffb7cff",
           data: [65.30, 65.20, 65.40, 65.60]
         }
       ]
