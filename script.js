@@ -1,5 +1,6 @@
-
-// Calcular porcentaje
+// -----------------------------
+// CALCULADORA DE PORCENTAJE
+// -----------------------------
 function calcularPorcentaje() {
   const cantidad = parseFloat(document.getElementById('cantidad').value);
   const porcentaje = parseFloat(document.getElementById('porcentaje').value);
@@ -19,9 +20,13 @@ function calcularPorcentaje() {
   });
 
   resultadoTexto.innerText = `El ${porcentaje}% de ${formatoMoneda.format(cantidad)} es ${formatoMoneda.format(resultado)}.`;
+
+  registrarAccion(`Calculado ${porcentaje}% de ${formatoMoneda.format(cantidad)} → ${formatoMoneda.format(resultado)}`);
 }
 
-// Convertir DOP a USD
+// -----------------------------
+// CONVERTIR DOP A USD
+// -----------------------------
 function convertirDOPaUSD() {
   const dop = parseFloat(document.getElementById("dop").value);
   const tasa = parseFloat(document.getElementById("banco").value);
@@ -34,9 +39,13 @@ function convertirDOPaUSD() {
 
   const usd = dop / tasa;
   resultadoEl.innerText = `RD$${dop.toFixed(2)} equivale a aproximadamente US$${usd.toFixed(2)} al cambiar en ese banco.`;
+
+  registrarAccion(`Convertido RD$${dop.toFixed(2)} a USD → US$${usd.toFixed(2)} (Tasa: ${tasa})`);
 }
 
-// Convertir DOP a EUR
+// -----------------------------
+// CONVERTIR DOP A EUR
+// -----------------------------
 function convertirDOPaEUR() {
   const cantidadDOP = parseFloat(document.getElementById("dop-eur").value);
   const tasaEUR = parseFloat(document.getElementById("banco-eur").value);
@@ -60,9 +69,13 @@ function convertirDOPaEUR() {
   });
 
   resultadoEl.innerText = `Equivalente en EUR: ${formatoEuro.format(resultadoEUR)} (Tasa: RD$${tasaEUR.toFixed(2)})`;
+
+  registrarAccion(`Convertido RD$${cantidadDOP.toFixed(2)} a EUR → ${formatoEuro.format(resultadoEUR)} (Tasa: ${tasaEUR})`);
 }
 
-// Crear gráfico de tasas
+// -----------------------------
+// GRÁFICO DE TASAS
+// -----------------------------
 document.addEventListener("DOMContentLoaded", function () {
   const ctx = document.getElementById("graficoTasas").getContext("2d");
 
@@ -98,14 +111,20 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   });
+
+  mostrarHistorial(); // También mostrar historial al cargar gráfico
 });
-// Cargar historial desde localStorage
+
+// -----------------------------
+// HISTORIAL DE ACCIONES
+// -----------------------------
 let historial = JSON.parse(localStorage.getItem('historialAcciones')) || [];
 
 function mostrarHistorial() {
   const lista = document.getElementById('historial');
-  lista.innerHTML = '';
+  if (!lista) return;
 
+  lista.innerHTML = '';
   historial.slice().reverse().forEach((accion) => {
     const li = document.createElement('li');
     li.textContent = accion;
@@ -128,7 +147,3 @@ function limpiarHistorial() {
     mostrarHistorial();
   }
 }
-
-// Mostrar historial al cargar
-document.addEventListener('DOMContentLoaded', mostrarHistorial);
-
