@@ -99,3 +99,36 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+// Cargar historial desde localStorage
+let historial = JSON.parse(localStorage.getItem('historialAcciones')) || [];
+
+function mostrarHistorial() {
+  const lista = document.getElementById('historial');
+  lista.innerHTML = '';
+
+  historial.slice().reverse().forEach((accion) => {
+    const li = document.createElement('li');
+    li.textContent = accion;
+    lista.appendChild(li);
+  });
+}
+
+function registrarAccion(descripcion) {
+  const fecha = new Date().toLocaleString();
+  const entrada = `${fecha} - ${descripcion}`;
+  historial.push(entrada);
+  localStorage.setItem('historialAcciones', JSON.stringify(historial));
+  mostrarHistorial();
+}
+
+function limpiarHistorial() {
+  if (confirm('¿Seguro que deseas borrar el historial?')) {
+    historial = [];
+    localStorage.removeItem('historialAcciones');
+    mostrarHistorial();
+  }
+}
+
+// Mostrar historial al cargar
+document.addEventListener('DOMContentLoaded', mostrarHistorial);
+
