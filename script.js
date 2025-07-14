@@ -22,25 +22,7 @@ function calcularPorcentaje() {
   resultadoTexto.innerText = `El ${porcentaje}% de ${formatoMoneda.format(cantidad)} es ${formatoMoneda.format(resultado)}.`;
 }
 
-// Conversión DOP a USD usando banco seleccionado
-function convertirDOPaUSD() {
-  const cantidadDOP = parseFloat(document.getElementById("dop").value);
-  const tasaVenta = parseFloat(document.getElementById("banco").value);
-  const resultadoEl = document.getElementById("resultado-conversion");
-
-  if (isNaN(tasaVenta)) {
-    resultadoEl.innerText = "Por favor, selecciona un banco antes de convertir.";
-    return;
-  }
-
-  if (isNaN(cantidadDOP) || cantidadDOP <= 0) {
-    resultadoEl.innerText = "Por favor ingresa una cantidad válida en RD$.";
-    return;
-  }
-
-  const resultadoUSD = cantidadDOP / tasaVenta;
-  resultadoEl.innerText = `Equivalente en USD: $${resultadoUSD.toFixed(2)} (Tasa: RD$ ${tasaVenta.toFixed(2)})`;
-}
+// Conversión DOP a USD
 function convertirDOPaUSD() {
   const dop = parseFloat(document.getElementById("dop").value);
   const tasa = parseFloat(document.getElementById("banco").value);
@@ -55,13 +37,10 @@ function convertirDOPaUSD() {
   resultadoEl.innerText = `RD$${dop.toFixed(2)} equivale a aproximadamente US$${usd.toFixed(2)} al cambiar en ese banco.`;
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const ctx = document.getElementById("graficoTasas").getContext("2d");
- 
+// Conversión DOP a EUR
 function convertirDOPaEUR() {
-  // Convertir de DOP a EUR
   const cantidadDOP = parseFloat(document.getElementById("dop").value);
-  const tasaEUR = parseFloat(document.getElementById("banco-eur").value); // Asegúrate de tener este ID
+  const tasaEUR = parseFloat(document.getElementById("banco-eur").value);
   const resultadoEl = document.getElementById("resultado-eur");
 
   if (isNaN(tasaEUR)) {
@@ -75,10 +54,17 @@ function convertirDOPaEUR() {
   }
 
   const resultadoEUR = cantidadDOP / tasaEUR;
-  resultadoEl.innerText = `Equivalente en EUR: €${resultadoEUR.toFixed(2)} (Tasa: RD$${tasaEUR.toFixed(2)})`;
+
+  const formatoEuro = new Intl.NumberFormat('es-ES', {
+    style: 'currency',
+    currency: 'EUR'
+  });
+
+  resultadoEl.innerText = `Equivalente en EUR: ${formatoEuro.format(resultadoEUR)} (Tasa: RD$${tasaEUR.toFixed(2)})`;
 }
 
-  document.addEventListener("DOMContentLoaded", function () {
+// Crear gráfico de tasas al cargar la página
+document.addEventListener("DOMContentLoaded", function () {
   const ctx = document.getElementById("graficoTasas").getContext("2d");
 
   new Chart(ctx, {
