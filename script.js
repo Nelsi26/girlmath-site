@@ -57,9 +57,9 @@ function convertirDOPaUSD() {
 
 document.addEventListener("DOMContentLoaded", function () {
   const ctx = document.getElementById("graficoTasas").getContext("2d");
- // 🔄 Mover esta función fuera del DOMContentLoaded
+ 
 function convertirDOPaEUR() {
-  // Aquí va tu lógica para convertir de DOP a EUR
+  // Convertir de DOP a EUR
   const cantidadDOP = parseFloat(document.getElementById("dop").value);
   const tasaEUR = parseFloat(document.getElementById("banco-eur").value); // Asegúrate de tener este ID
   const resultadoEl = document.getElementById("resultado-eur");
