@@ -12,7 +12,6 @@ function calcularPorcentaje() {
 
   const resultado = (cantidad * porcentaje) / 100;
 
-  // Formatear a moneda (pesos dominicanos)
   const formatoMoneda = new Intl.NumberFormat('es-DO', {
     style: 'currency',
     currency: 'DOP',
@@ -22,7 +21,7 @@ function calcularPorcentaje() {
   resultadoTexto.innerText = `El ${porcentaje}% de ${formatoMoneda.format(cantidad)} es ${formatoMoneda.format(resultado)}.`;
 }
 
-// Conversión DOP a USD
+// Convertir DOP a USD
 function convertirDOPaUSD() {
   const dop = parseFloat(document.getElementById("dop").value);
   const tasa = parseFloat(document.getElementById("banco").value);
@@ -37,11 +36,11 @@ function convertirDOPaUSD() {
   resultadoEl.innerText = `RD$${dop.toFixed(2)} equivale a aproximadamente US$${usd.toFixed(2)} al cambiar en ese banco.`;
 }
 
-// Conversión DOP a EUR
+// Convertir DOP a EUR
 function convertirDOPaEUR() {
-  const cantidadDOP = parseFloat(document.getElementById("dop").value);
+  const cantidadDOP = parseFloat(document.getElementById("dop-eur").value);
   const tasaEUR = parseFloat(document.getElementById("banco-eur").value);
-  const resultadoEl = document.getElementById("resultado-eur");
+  const resultadoEl = document.getElementById("resultado-conversion-eur");
 
   if (isNaN(tasaEUR)) {
     resultadoEl.innerText = "Selecciona una tasa de cambio válida para EUR.";
@@ -63,7 +62,7 @@ function convertirDOPaEUR() {
   resultadoEl.innerText = `Equivalente en EUR: ${formatoEuro.format(resultadoEUR)} (Tasa: RD$${tasaEUR.toFixed(2)})`;
 }
 
-// Crear gráfico de tasas al cargar la página
+// Crear gráfico de tasas
 document.addEventListener("DOMContentLoaded", function () {
   const ctx = document.getElementById("graficoTasas").getContext("2d");
 
