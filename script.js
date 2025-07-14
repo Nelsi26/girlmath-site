@@ -79,8 +79,7 @@ function convertirDOPaEUR() {
 }
 
   document.addEventListener("DOMContentLoaded", function () {
-  const ctx = document.getElementById("graficoTasas").getContext("2d");}
-
+  const ctx = document.getElementById("graficoTasas").getContext("2d");
 
   new Chart(ctx, {
     type: "bar",
