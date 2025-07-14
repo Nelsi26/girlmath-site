@@ -78,8 +78,8 @@ function convertirDOPaEUR() {
   resultadoEl.innerText = `Equivalente en EUR: €${resultadoEUR.toFixed(2)} (Tasa: RD$${tasaEUR.toFixed(2)})`;
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const ctx = document.getElementById("graficoTasas").getContext("2d");
+  document.addEventListener("DOMContentLoaded", function () {
+  const ctx = document.getElementById("graficoTasas").getContext("2d");}
 
 
   new Chart(ctx, {
