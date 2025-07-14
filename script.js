@@ -57,8 +57,29 @@ function convertirDOPaUSD() {
 
 document.addEventListener("DOMContentLoaded", function () {
   const ctx = document.getElementById("graficoTasas").getContext("2d");
-  function convertirDOPaEUR() {
-  // Lógica para convertir de DOP a EUR
+ // 🔄 Mover esta función fuera del DOMContentLoaded
+function convertirDOPaEUR() {
+  // Aquí va tu lógica para convertir de DOP a EUR
+  const cantidadDOP = parseFloat(document.getElementById("dop").value);
+  const tasaEUR = parseFloat(document.getElementById("banco-eur").value); // Asegúrate de tener este ID
+  const resultadoEl = document.getElementById("resultado-eur");
+
+  if (isNaN(tasaEUR)) {
+    resultadoEl.innerText = "Selecciona una tasa de cambio válida para EUR.";
+    return;
+  }
+
+  if (isNaN(cantidadDOP) || cantidadDOP <= 0) {
+    resultadoEl.innerText = "Ingresa una cantidad válida en RD$.";
+    return;
+  }
+
+  const resultadoEUR = cantidadDOP / tasaEUR;
+  resultadoEl.innerText = `Equivalente en EUR: €${resultadoEUR.toFixed(2)} (Tasa: RD$${tasaEUR.toFixed(2)})`;
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const ctx = document.getElementById("graficoTasas").getContext("2d");
 }
 
   new Chart(ctx, {
@@ -67,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
       labels: ["Banco Popular", "Banreservas", "BHD León", "Scotiabank"],
       datasets: [
         {
-         label: "Venta USD",
+          label: "Venta USD",
           backgroundColor: "#f26abcff",
           data: [60.75, 60.70, 60.75, 60.85]
         },
