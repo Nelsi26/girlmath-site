@@ -55,3 +55,39 @@ function convertirDOPaUSD() {
   resultadoEl.innerText = `RD$${dop.toFixed(2)} equivale a aproximadamente US$${usd.toFixed(2)} al cambiar en ese banco.`;
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+  const ctx = document.getElementById("graficoTasas").getContext("2d");
+
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: ["Banco Popular", "Banreservas", "BHD León", "Scotiabank"],
+      datasets: [
+        {
+          label: "Venta USD",
+          backgroundColor: "#4CAF50",
+          data: [60.75, 60.70, 60.75, 60.85]
+        },
+        {
+          label: "Venta EUR",
+          backgroundColor: "#2196F3",
+          data: [65.30, 65.20, 65.40, 65.60]
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        title: {
+          display: true,
+          text: "Tasas de Venta por Banco (USD y EUR)"
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: false
+        }
+      }
+    }
+  });
+});
