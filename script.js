@@ -41,3 +41,17 @@ function convertirDOPaUSD() {
   const resultadoUSD = cantidadDOP / tasaVenta;
   resultadoEl.innerText = `Equivalente en USD: $${resultadoUSD.toFixed(2)} (Tasa: RD$ ${tasaVenta.toFixed(2)})`;
 }
+function convertirDOPaUSD() {
+  const dop = parseFloat(document.getElementById("dop").value);
+  const tasa = parseFloat(document.getElementById("banco").value);
+  const resultadoEl = document.getElementById("resultado-conversion");
+
+  if (isNaN(dop) || isNaN(tasa)) {
+    resultadoEl.innerText = "Completa ambos campos para calcular.";
+    return;
+  }
+
+  const usd = dop / tasa;
+  resultadoEl.innerText = `RD$${dop.toFixed(2)} equivale a aproximadamente US$${usd.toFixed(2)} al cambiar en ese banco.`;
+}
+
