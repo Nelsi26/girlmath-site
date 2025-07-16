@@ -69,47 +69,60 @@
     <p id="resultado"></p>
   </div>
 
-  <!-- Conversor de DOP a USD -->
+<!-- Conversor DOP a USD y EUR en una sola tabla -->
 <div class="section">
-  <h2>Convertir de DOP a USD</h2>
+  <h2>Conversor de DOP a USD y EUR</h2>
 
-  <label for="dop">Cantidad en RD$:</label>
-  <input type="number" id="dop" placeholder="Ej:RD$ 5,000" step="0.01">
+  <label for="dop-total">Cantidad en RD$:</label>
+  <input type="number" id="dop-total" placeholder="Ej: RD$ 5,000" step="0.01">
 
- <label for="banco">Selecciona un banco:</label>
-<select id="banco">
-  <option value="">-- Selecciona un banco --</option>
-  <option value="60.75">Banco Popular</option>
-  <option value="60.70">Banreservas</option>
-  <option value="60.75">BHD León</option>
-  <option value="60.85">Scotiabank</option>
-</select>
-
-  <button onclick="convertirDOPaUSD()">Convertir</button>
-
-  <p id="resultado-conversion"></p>
+  <table border="1" cellpadding="10">
+    <thead>
+      <tr>
+        <th>Moneda</th>
+        <th>Selecciona un banco</th>
+        <th>Acción</th>
+        <th>Resultado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>USD</td>
+        <td>
+          <select id="banco-usd">
+            <option value="">-- Selecciona un banco --</option>
+            <option value="60.75">Banco Popular</option>
+            <option value="60.70">Banreservas</option>
+            <option value="60.75">BHD León</option>
+            <option value="60.85">Scotiabank</option>
+          </select>
+        </td>
+        <td>
+          <button onclick="convertirDOPaUSD()">Convertir</button>
+        </td>
+        <td><p id="resultado-usd"></p></td>
+      </tr>
+      <tr>
+        <td>EUR</td>
+        <td>
+          <select id="banco-eur">
+            <option value="">-- Selecciona un banco --</option>
+            <option value="65.30">Banco Popular</option>
+            <option value="65.20">Banreservas</option>
+            <option value="65.40">BHD León</option>
+            <option value="65.60">Scotiabank</option>
+          </select>
+        </td>
+        <td>
+          <button onclick="convertirDOPaEUR()">Convertir</button>
+        </td>
+        <td><p id="resultado-eur"></p></td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-     <!-- Conversor de DOP a EUR -->
-<div class="section">
-  <h2>Convertir de DOP a EUR</h2>
 
-  <label for="dop-eur">Cantidad en RD$:</label>
-  <input type="number" id="dop-eur" placeholder="Ej: RD$ 5,000" step="0.01">
-
-  <label for="banco-eur">Selecciona un banco:</label>
-  <select id="banco-eur">
-    <option value="">-- Selecciona un banco --</option>
-    <option value="65.30">Banco Popular</option>
-    <option value="65.20">Banreservas</option>
-    <option value="65.40">BHD León</option>
-    <option value="65.60">Scotiabank</option>
-  </select>
-
-  <button onclick="convertirDOPaEUR()">Convertir</button>
-
-  <p id="resultado-conversion-eur"></p>
-</div>
-     <!-- Historial de Acciones -->
+<!-- Historial de Acciones -->
 <div class="section">
   <h2>Historial de Acciones</h2>
   <ul id="historial"></ul>
