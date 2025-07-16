@@ -28,9 +28,9 @@ function calcularPorcentaje() {
 // CONVERTIR DOP A USD
 // -----------------------------
 function convertirDOPaUSD() {
-  const dop = parseFloat(document.getElementById("dop").value);
-  const tasa = parseFloat(document.getElementById("banco").value);
-  const resultadoEl = document.getElementById("resultado-conversion");
+  const dop = parseFloat(document.getElementById("dop-total").value);
+  const tasa = parseFloat(document.getElementById("banco-usd").value);
+  const resultadoEl = document.getElementById("resultado-usd");
 
   if (isNaN(dop) || isNaN(tasa)) {
     resultadoEl.innerText = "Completa ambos campos para calcular.";
@@ -38,7 +38,7 @@ function convertirDOPaUSD() {
   }
 
   const usd = dop / tasa;
-  resultadoEl.innerText = `RD$${dop.toFixed(2)} equivale a aproximadamente US$${usd.toFixed(2)} al cambiar en ese banco.`;
+  resultadoEl.innerText = `RD$${dop.toFixed(2)} equivale a US$${usd.toFixed(2)} (Tasa: ${tasa})`;
 
   registrarAccion(`Convertido RD$${dop.toFixed(2)} a USD → US$${usd.toFixed(2)} (Tasa: ${tasa})`);
 }
@@ -47,12 +47,12 @@ function convertirDOPaUSD() {
 // CONVERTIR DOP A EUR
 // -----------------------------
 function convertirDOPaEUR() {
-  const cantidadDOP = parseFloat(document.getElementById("dop-eur").value);
+  const cantidadDOP = parseFloat(document.getElementById("dop-total").value);
   const tasaEUR = parseFloat(document.getElementById("banco-eur").value);
-  const resultadoEl = document.getElementById("resultado-conversion-eur");
+  const resultadoEl = document.getElementById("resultado-eur");
 
   if (isNaN(tasaEUR)) {
-    resultadoEl.innerText = "Selecciona una tasa de cambio válida para EUR.";
+    resultadoEl.innerText = "Selecciona una tasa válida.";
     return;
   }
 
@@ -72,11 +72,6 @@ function convertirDOPaEUR() {
 
   registrarAccion(`Convertido RD$${cantidadDOP.toFixed(2)} a EUR → ${formatoEuro.format(resultadoEUR)} (Tasa: ${tasaEUR})`);
 }
-
-
-
-  mostrarHistorial(); // También mostrar historial al cargar gráfico
-});
 
 // -----------------------------
 // HISTORIAL DE ACCIONES
@@ -110,3 +105,10 @@ function limpiarHistorial() {
     mostrarHistorial();
   }
 }
+
+// -----------------------------
+// EJECUTAR AL CARGAR
+// -----------------------------
+document.addEventListener("DOMContentLoaded", () => {
+  mostrarHistorial();
+});
