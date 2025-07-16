@@ -73,44 +73,7 @@ function convertirDOPaEUR() {
   registrarAccion(`Convertido RD$${cantidadDOP.toFixed(2)} a EUR → ${formatoEuro.format(resultadoEUR)} (Tasa: ${tasaEUR})`);
 }
 
-// -----------------------------
-// GRÁFICO DE TASAS
-// -----------------------------
-document.addEventListener("DOMContentLoaded", function () {
-  const ctx = document.getElementById("graficoTasas").getContext("2d");
 
-  new Chart(ctx, {
-    type: "bar",
-    data: {
-      labels: ["Banco Popular", "Banreservas", "BHD León", "Scotiabank"],
-      datasets: [
-        {
-          label: "Venta USD",
-          backgroundColor: "#f26abcff",
-          data: [60.75, 60.70, 60.75, 60.85]
-        },
-        {
-          label: "Venta EUR",
-          backgroundColor: "#fffb7cff",
-          data: [65.30, 65.20, 65.40, 65.60]
-        }
-      ]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        title: {
-          display: true,
-          text: "Tasas de Venta por Banco (USD y EUR)"
-        }
-      },
-      scales: {
-        y: {
-          beginAtZero: false
-        }
-      }
-    }
-  });
 
   mostrarHistorial(); // También mostrar historial al cargar gráfico
 });
